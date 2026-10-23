@@ -1,111 +1,657 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Archive</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }body {
-  margin: 0;
-  background: #101010;
-  color: #eeeeee;
-  font-family: Georgia, serif;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MY NAME Is Logan </title>
+
+<style>
+:root {
+  --bg: #09090c;
+  --panel: #141419;
+  --line: #34313a;
+  --text: #f2eff4;
+  --muted: #aaa3b1;
+  --red: #a72c3d;
+  --gold: #c5a978;
 }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+button, input { font: inherit; }
+
+button { cursor: pointer; }
 
 header {
-  padding: 24px 20px;
-  border-bottom: 1px solid #444;
+  padding: 22px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  font-size: 13px;
+  font-weight: bold;
   letter-spacing: 4px;
-  font-size: 12px;
-  color: #aaa;
 }
 
-main {
-  max-width: 650px;
-  margin: auto;
-  padding: 70px 24px;
-}
-
-.label {
-  color: #b99a76;
-  letter-spacing: 4px;
-  font: 11px Arial, sans-serif;
-}
-
-h1 {
-  font-size: clamp(42px, 10vw, 76px);
-  margin: 22px 0;
-  letter-spacing: 3px;
-}
-
-.line {
-  width: 55px;
-  border-top: 2px solid #b99a76;
-  margin: 28px 0;
-}
-
-p {
-  color: #bcbcbc;
-  font: 15px/1.9 Arial, sans-serif;
-}
-
-.notice {
-  border: 1px solid #444;
-  padding: 18px;
-  margin-top: 35px;
-  font: 11px Arial, sans-serif;
-  letter-spacing: 1px;
-  color: #b99a76;
-}
-
-a {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 15px 20px;
-  border: 1px solid #b99a76;
-  color: #eeeeee;
-  text-decoration: none;
-  font: 11px Arial, sans-serif;
-  letter-spacing: 2px;
-}
-
-a:hover {
-  background: #b99a76;
-  color: #101010;
-}
-
-footer {
-  padding: 25px;
-  border-top: 1px solid #333;
-  text-align: center;
-  color: #777;
+.brand small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
   font: 10px Arial, sans-serif;
   letter-spacing: 2px;
 }
 
-  </style>
+.status {
+  color: #e16b7b;
+  font: 10px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.hero {
+  padding: 75px 22px;
+  background:
+    linear-gradient(90deg, #09090c 15%, #09090cd9 100%),
+    repeating-linear-gradient(
+      0deg, transparent, transparent 39px, #ffffff08 40px
+    );
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-inner {
+  max-width: 900px;
+  margin: auto;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font: 11px Arial, sans-serif;
+  letter-spacing: 4px;
+}
+
+h1 {
+  font-size: clamp(52px, 12vw, 105px);
+  line-height: .9;
+  letter-spacing: -4px;
+  margin: 25px 0 10px;
+}
+
+h1 span { color: var(--red); }
+
+.pairing {
+  letter-spacing: 4px;
+  font-size: 13px;
+  color: var(--gold);
+}
+
+.description {
+  max-width: 600px;
+  color: #bcb6c1;
+  font: 14px/1.9 Arial, sans-serif;
+  margin-top: 25px;
+}
+
+.quote {
+  border-left: 2px solid var(--red);
+  padding: 15px 20px;
+  margin-top: 30px;
+  font-size: 19px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.btn {
+  background: var(--red);
+  color: white;
+  border: 1px solid var(--red);
+  padding: 13px 17px;
+  font: 11px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.btn.secondary {
+  background: transparent;
+  border-color: var(--line);
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+nav button {
+  white-space: nowrap;
+  color: var(--muted);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 12px 15px;
+  font: 11px Arial, sans-serif;
+}
+
+nav button.active,
+nav button:hover {
+  border-color: var(--red);
+  color: white;
+}
+
+.page {
+  padding: 35px 0;
+}
+
+.hidden { display: none; }
+
+.section-label {
+  color: var(--gold);
+  font: 10px Arial, sans-serif;
+  letter-spacing: 3px;
+}
+
+h2 {
+  font-size: 29px;
+  margin: 10px 0 20px;
+}
+
+h3 { margin-top: 0; }
+
+.muted {
+  color: var(--muted);
+  font: 13px/1.9 Arial, sans-serif;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 22px;
+  margin: 14px 0;
+}
+
+.card h3 { font-size: 21px; }
+
+.tag {
+  display: inline-block;
+  color: #e58a98;
+  border: 1px solid #71313d;
+  padding: 5px 8px;
+  margin: 4px 4px 4px 0;
+  font: 9px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.character-image {
+  min-height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1b171d;
+  border: 1px dashed #55444c;
+  color: #8d818a;
+  text-align: center;
+  font: 11px/1.8 Arial, sans-serif;
+  margin-bottom: 18px;
+  padding: 15px;
+}
+
+.data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.data div {
+  background: #0c0c10;
+  padding: 12px;
+  font: 12px Arial, sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.data small {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-size: 9px;
+}
+
+.timeline {
+  border-left: 1px solid #5d3039;
+  margin-left: 8px;
+  padding-left: 20px;
+}
+
+.event {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.event:before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--red);
+  left: -25px;
+  top: 5px;
+}
+
+.event small {
+  color: var(--gold);
+  font: 10px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.event h3 { margin: 10px 0; }
+
+.event p {
+  color: var(--muted);
+  font: 13px/1.9 Arial, sans-serif;
+}
+
+details {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  margin: 12px 0;
+}
+
+summary {
+  padding: 18px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.detail-content {
+  padding: 0 18px 18px;
+  color: var(--muted);
+  font: 13px/1.9 Arial, sans-serif;
+}
+
+.post {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.post:last-child { border-bottom: 0; }
+
+.post-name {
+  color: var(--gold);
+  font: 12px Arial, sans-serif;
+}
+
+.post p {
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.like {
+  background: none;
+  color: var(--muted);
+  border: 0;
+  padding: 0;
+  font: 12px Arial, sans-serif;
+}
+
+.chatbox {
+  background: #101016;
+  border: 1px solid var(--line);
+}
+
+.chat-head {
+  padding: 16px;
+  background: #1c171e;
+  border-bottom: 1px solid var(--line);
+  font: 12px Arial, sans-serif;
+}
+
+.messages {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bubble {
+  background: #25212a;
+  padding: 12px 15px;
+  max-width: 85%;
+  border-radius: 12px;
+  font: 13px/1.7 Arial, sans-serif;
+  align-self: flex-start;
+}
+
+.bubble.me {
+  background: #592934;
+  align-self: flex-end;
+}
+
+.chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.chat-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  background: #1a171e;
+  color: white;
+  border: 1px solid var(--line);
+}
+
+.secret {
+  filter: blur(5px);
+  transition: .3s;
+}
+
+.secret.open {
+  filter: none;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 30px 15px;
+  color: #817984;
+  font: 10px/2 Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+@media(max-width:600px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 55px 20px; }
+  h1 { letter-spacing: -2px; }
+}
+</style>
 </head>
+
 <body>
-  <header>CONFIDENTIAL ARCHIVE — FICTIONAL CASE</header>  <main>
-    <div class="label">AN UNRESOLVED CASE</div><h1>THE<br>UNTOLD</h1>
 
-<div class="line"></div>
+<header>
+  <div class="brand">
+    MY NAME
+    <small>THE PRIVATE ARCHIVE</small>
+  </div>
+  <div class="status">● CLASSIFIED</div>
+</header>
 
-<p>
-  Sebuah keluarga ditemukan tewas.
-  Seorang model terkenal menjadi pusat kecurigaan.
-  Namun, tanpa bukti yang cukup, kebenaran
-  tetap terkubur di balik berbagai rahasia.
-</p>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">A DEAD FAMILY. A PRISONER. AN HEIR IN DANGER.</div>
+    <h1>MY <span>NAME</span></h1>
+    <div class="pairing">LOGAN × ACHILLES</div>
 
-<div class="notice">
-  CASE STATUS: UNSOLVED<br>
-  ACCESS LEVEL: RESTRICTED
+    <p class="description">
+      Sebuah arsip rahasia tentang Logan—kasus yang menghancurkan
+      hidupnya, kematian keluarganya, tahun-tahun di balik jeruji besi,
+      dan Achilles, pewaris keluarga berbahaya yang datang membawa
+      satu permintaan. Dari sebuah kesepakatan lahir kisah cinta
+      yang tak pernah aman.
+    </p>
+
+    <div class="quote">
+      “I came here to ask for your help.<br>
+      Not to fall for you.”
+    </div>
+
+    <div class="buttons">
+      <button class="btn" onclick="showPage('story')">IKUTI KASUS LOGAN ↗</button>
+      <button class="btn secondary" onclick="showPage('secret')">BUKA BERKAS RAHASIA</button>
+    </div>
+  </div>
 </div>
 
-<a href="prologue.html">ENTER THE ARCHIVE ↗</a>
+<main>
+<nav>
+  <button class="active" data-page="home" onclick="showPage('home')">Beranda</button>
+  <button data-page="profiles" onclick="showPage('profiles')">Profil</button>
+  <button data-page="story" onclick="showPage('story')">Kronologi</button>
+  <button data-page="social" onclick="showPage('social')">Timeline sosial</button>
+  <button data-page="chat" onclick="showPage('chat')">Private chat</button>
+  <button data-page="secret" onclick="showPage('secret')">Arsip rahasia</button>
+</nav>
 
-  </main>  <footer>ALL RECORDS ARE PART OF A FICTIONAL STORY</footer>
+<div id="home" class="page">
+  <div class="section-label">FILE 001 / CASE ARCHIVE</div>
+  <h2>Welcome to the archive.</h2>
+  <p class="muted">Sebuah kisah fiksi tentang keadilan, kehilangan, cinta, dan pengkhianatan.</p>
+
+  <div class="grid">
+    <div class="card">
+      <span class="tag">CASE FILE</span>
+      <h3>Kasus Logan</h3>
+      <p class="muted">Sebuah tragedi merenggut keluarga Logan. Namun, apakah orang yang dipenjara benar-benar pelakunya?</p>
+      <button class="btn secondary" onclick="showPage('story')">BACA KRONOLOGI</button>
+    </div>
+    <div class="card">
+      <span class="tag">THE HEIR</span>
+      <h3>Permintaan Achilles</h3>
+      <p class="muted">Achilles datang ke penjara untuk meminta bantuan seorang pria yang seharusnya tidak ia percayai.</p>
+      <button class="btn secondary" onclick="showPage('chat')">LIHAT PERCAKAPAN</button>
+    </div>
+  </div>
+</div>
+
+<div id="profiles" class="page hidden">
+  <div class="section-label">SUBJECT DATABASE / 002</div>
+  <h2>Character files.</h2>
+  <div class="grid">
+    <article class="card">
+      <div class="character-image">LOGAN'S PORTRAIT<br>Tambahkan foto Logan di sini</div>
+      <span class="tag">THE PRISONER</span>
+      <h3>Logan</h3>
+      <p class="muted">Pria yang kehilangan keluarganya dan menghabiskan tahun-tahun hidupnya di balik jeruji besi. Dunia mengenalnya sebagai tersangka. Kebenaran mengenalnya dengan nama lain.</p>
+      <div class="data">
+        <div><small>STATUS</small>Narapidana</div>
+        <div><small>CASE</small>Family murder</div>
+        <div><small>PERSONALITY</small>[Isi di sini]</div>
+        <div><small>SECRET</small>[Dirahasiakan]</div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="character-image">ACHILLES' PORTRAIT<br>Tambahkan foto Achilles di sini</div>
+      <span class="tag">THE HEIR</span>
+      <h3>Achilles</h3>
+      <p class="muted">Pewaris keluarga berkuasa yang hidup di tengah ancaman dari darahnya sendiri. Ia datang kepada Logan untuk meminta pertolongan—tanpa tahu bahwa pria itu akan menjadi kelemahannya.</p>
+      <div class="data">
+        <div><small>STATUS</small>Pewaris keluarga</div>
+        <div><small>THREAT</small>Own family</div>
+        <div><small>PERSONALITY</small>[Isi di sini]</div>
+        <div><small>SECRET</small>[Dirahasiakan]</div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<div id="story" class="page hidden">
+  <div class="section-label">CASE TIMELINE / 003</div>
+  <h2>The beginning of everything.</h2>
+  <p class="muted">Kronologi awal cerita. Kamu bisa mengganti deskripsi ini sesuai plot final AU-mu.</p>
+
+  <div class="timeline">
+    <article class="event">
+      <small>CHAPTER 01 · BEFORE THE PRISON</small>
+      <h3>Kematian sebuah keluarga</h3>
+      <p>Suatu hari, kehidupan Logan berubah selamanya. Keluarganya ditemukan tewas, dan sejak saat itu setiap jawaban justru melahirkan pertanyaan baru.</p>
+    </article>
+    <article class="event">
+      <small>CHAPTER 02 · THE CASE</small>
+      <h3>Nama yang dijadikan tersangka</h3>
+      <p>Petunjuk mengarah kepada Logan. Di tengah duka dan penyelidikan, ia menjadi orang yang paling mudah disalahkan. Tetapi bukti yang terlihat belum tentu menceritakan seluruh kebenaran.</p>
+    </article>
+    <article class="event">
+      <small>CHAPTER 03 · BEHIND BARS</small>
+      <h3>Tahun-tahun di penjara</h3>
+      <p>Di balik jeruji besi, Logan belajar bahwa waktu tidak selalu menyembuhkan. Kadang, waktu hanya mengajari seseorang cara bertahan hidup dengan luka yang sama.</p>
+    </article>
+    <article class="event">
+      <small>CHAPTER 04 · THE VISITOR</small>
+      <h3>Achilles datang</h3>
+      <p>Achilles, seorang pewaris dari keluarga berbahaya, datang menemui Logan. Ia membawa permintaan yang tidak bisa dipercayakan kepada sembarang orang.</p>
+    </article>
+    <article class="event">
+      <small>CHAPTER 05 · AN AGREEMENT</small>
+      <h3>Sebuah kesepakatan</h3>
+      <p>Logan tidak punya alasan untuk membantu Achilles. Achilles pun tidak punya alasan untuk memercayai Logan. Namun, keadaan memaksa keduanya berdiri di sisi yang sama.</p>
+    </article>
+    <article class="event">
+      <small>CHAPTER 06 · THE THREAT</small>
+      <h3>Keluarga yang ingin Achilles mati</h3>
+      <p>Semakin dekat mereka, semakin jelas bahwa ancaman terbesar bukan hanya datang dari luar. Keluarga Achilles sendiri menginginkan pewaris itu lenyap.</p>
+    </article>
+    <article class="event">
+      <small>CHAPTER 07 · SOMETHING MORE</small>
+      <h3>Di antara bahaya dan cinta</h3>
+      <p>Kepercayaan tumbuh perlahan, di sela rahasia, pertengkaran, dan upaya untuk tetap hidup. Mereka tidak pernah merencanakan jatuh cinta—terlebih dalam keadaan seperti ini.</p>
+    </article>
+  </div>
+</div>
+
+<div id="social" class="page hidden">
+  <div class="section-label">SOCIAL TRACE / 004</div>
+  <h2>Timeline sosial.</h2>
+  <p class="muted">Postingan fiktif karakter. Bukan unggahan sungguhan dan tidak terhubung ke media sosial.</p>
+
+  <div class="card">
+    <div class="post">
+      <div class="post-name">LOGAN · @unknown</div>
+      <p>Orang-orang selalu ingin tahu siapa yang bersalah. Tidak banyak yang benar-benar ingin tahu apa yang terjadi.</p>
+      <button class="like" onclick="likePost(this)">♡ <span>24</span></button>
+    </div>
+    <div class="post">
+      <div class="post-name">ACHILLES · @heir</div>
+      <p>Lucu, ya. Rumah yang seharusnya menjadi tempat paling aman justru menjadi tempat pertama yang ingin kau tinggalkan.</p>
+      <button class="like" onclick="likePost(this)">♡ <span>38</span></button>
+    </div>
+    <div class="post">
+      <div class="post-name">LOGAN · @unknown</div>
+      <p>Aku tidak pernah berjanji akan menyelamatkanmu.</p>
+      <button class="like" onclick="likePost(this)">♡ <span>17</span></button>
+    </div>
+  </div>
+</div>
+
+<div id="chat" class="page hidden">
+  <div class="section-label">PRIVATE COMMUNICATION / 005</div>
+  <h2>Private messages.</h2>
+  <p class="muted">Simulasi percakapan Logan dan Achilles.</p>
+
+  <div class="chatbox">
+    <div class="chat-head">LOGAN ↔ ACHILLES · ENCRYPTED CHAT</div>
+    <div class="messages" id="messages">
+      <div class="bubble">Achilles: Aku butuh bantuanmu.</div>
+      <div class="bubble me">Logan: Kau datang jauh-jauh ke penjara hanya untuk mengatakan itu?</div>
+      <div class="bubble">Achilles: Aku tidak punya orang lain untuk dimintai tolong.</div>
+      <div class="bubble me">Logan: Itu masalahmu, bukan masalahku.</div>
+      <div class="bubble">Achilles: Kalau keluargaku menemukanku lebih dulu, aku akan mati.</div>
+    </div>
+    <form class="chat-form" onsubmit="sendMessage(event)">
+      <input id="messageInput" placeholder="Tulis pesan simulasi..." autocomplete="off">
+      <button class="btn">Kirim</button>
+    </form>
+  </div>
+  <p class="muted">Pesan yang kamu tulis hanya muncul di browser saat ini. Pesan tidak dikirim kepada orang lain.</p>
+</div>
+
+<div id="secret" class="page hidden">
+  <div class="section-label">RESTRICTED DOCUMENT / 006</div>
+  <h2>Classified files.</h2>
+  <div class="card">
+    <span class="tag">CONFIDENTIAL</span>
+    <h3>Catatan yang disembunyikan</h3>
+    <p class="muted">Ada bagian dari kasus Logan yang tidak tercatat dalam laporan publik. Ada juga rahasia keluarga Achilles yang mungkin menjadi alasan seseorang ingin membunuhnya.</p>
+    <details>
+      <summary>FILE A — Kematian keluarga Logan</summary>
+      <div class="detail-content">[Masukkan bukti, petunjuk, dan rahasia kasus Logan di sini.]</div>
+    </details>
+    <details>
+      <summary>FILE B — Rahasia keluarga Achilles</summary>
+      <div class="detail-content">[Masukkan nama orang yang mengancam Achilles, motif, dan bukti yang ditemukan.]</div>
+    </details>
+    <details>
+      <summary>FILE C — Surat untuk Achilles</summary>
+      <div class="detail-content">
+        <p class="secret" id="letter">Jika sesuatu terjadi padaku, jangan kembali ke rumah itu. Jangan percaya kepada siapa pun yang menyebut dirinya keluargamu. Dan jangan pernah berpikir bahwa aku menyesal telah memilihmu.</p>
+        <button class="btn" onclick="toggleSecret()">BUKA / TUTUP SURAT</button>
+      </div>
+    </details>
+  </div>
+</div>
+
+<footer>
+  MY NAME · LOGAN × ACHILLES<br>
+  UNOFFICIAL FICTIONAL AU · CASE ARCHIVE
+</footer>
+</main>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  document.querySelectorAll('nav button').forEach(button => {
+    button.classList.toggle('active', button.dataset.page === id);
+  });
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function likePost(button) {
+  const count = button.querySelector('span');
+  const liked = button.dataset.liked === 'true';
+  count.textContent = Number(count.textContent) + (liked ? -1 : 1);
+  button.dataset.liked = liked ? 'false' : 'true';
+  button.firstChild.textContent = liked ? '♡ ' : '♥ ';
+}
+
+function sendMessage(event) {
+  event.preventDefault();
+  const input = document.getElementById('messageInput');
+  const value = input.value.trim();
+  if (!value) return;
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble me';
+  bubble.textContent = 'Kamu: ' + value;
+  document.getElementById('messages').appendChild(bubble);
+  input.value = '';
+}
+
+function toggleSecret() {
+  document.getElementById('letter').classList.toggle('open');
+}
+</script>
+
 </body>
 </html>
